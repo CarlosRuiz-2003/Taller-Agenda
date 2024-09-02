@@ -29,7 +29,7 @@ public class App {
     public static boolean redireccion(int operacion) {
         switch (operacion) {
             case 1:
-                //Contacto.menuContacto();
+                Contacto.menuContacto();
                 break;
             case 2:
                 //Grupo.menuGrupo();

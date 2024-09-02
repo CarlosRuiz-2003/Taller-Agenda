@@ -1,22 +1,25 @@
 package co.edu.uniquindio.poo;
 
-import java.util.List;
 import java.sql.Date;
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Collection;
-import java.util.LinkedList;
+import java.util.Scanner;
 
+
+//Clase para la creacion de reuniones
 public class Reunion {
-    //Collercion<> listaAsistencia = new List<>;
-    public List listaAsistencia;
     public Date fecha;
     public String descripcion;
-    public int hora;
-    public Collection<Contacto> contactos;
+    public String hora;
+    public Collection <Contacto> listaAsistencia;
+    public Collection <Reunion> reuniones;
     
 
 
-    //Costructor de la clase Reunion
-    public Reunion(List listaAsistencia, Date fecha, String descripcion, int hora) {
+    //Metodo costructor de la clase Reunion
+    public Reunion(Collection<Contacto> listaAsistencia, Date fecha, String descripcion, String hora) {
         this.listaAsistencia = listaAsistencia;
         this.fecha = fecha;
         this.descripcion = descripcion;
@@ -24,11 +27,11 @@ public class Reunion {
     }
 
 
-    public List getListaAsistencia() {
+    public Collection<Contacto> getListaAsistencia() {
         return listaAsistencia;
     }
 
-    public void setListaAsistencia(List listaAsistencia) {
+    public void setListaAsistencia(Collection<Contacto> listaAsistencia) {
         this.listaAsistencia = listaAsistencia;
     }
 
@@ -51,40 +54,66 @@ public class Reunion {
     }
 
 
-    public int getHora() {
+    public String getHora() {
         return hora;
     }
 
-    public void setHora(int hora) {
+    public void setHora(String hora) {
         this.hora = hora;
     }
 
-    //Metodo para agregar contactos
-    public void agregarContacto(Contacto contacto) {
-        if (!verificarContacto(contacto.getNombre(), contacto.getTelefono())) {
-            contactos.add(contacto);
-        }
+    
+
+    @Override
+    public String toString() {
+        return "Reunion [fecha=" + fecha + ", descripcion=" + descripcion + ", hora=" + hora + ", listaAsistencia="
+                + listaAsistencia + ", reuniones=" + reuniones + "]";
     }
 
-    //Metodo para verificar que no se repitan los contactos
-    public boolean verificarContacto(String nombre, String telf) {
-        boolean centinela = false;
-        for (Contacto contacto : contactos) {
-            if (contacto.getNombre().equals(nombre) && contacto.getTelefono().equals(telf)) {
-                 centinela = true;
+
+    //Metodo para agregar reuniones
+    public void CrearReuniones(int limite) {
+        DateFormat dateFormat = new SimpleDateFormat();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Nombre del contacto: ");
+        String descripcion  = scanner.nextLine();
+        System.out.println("Alias del contacto: ");
+        String alias  = scanner.nextLine();
+        for (int i = 0; i < limite; i++) {
+            System.out.println("Ingrese el nombre del contacto: ");
+            String nombreM  = scanner.nextLine();
+            System.out.println("Ingrese el telefono del contacto: ");
+            String telefonoM  = scanner.nextLine();
+            if (!Contacto.verificarContacto(nombreM, telefonoM)) {
             }
         }
-        return centinela;
+        Reunion reunion = new Reunion(listaAsistencia, fecha, descripcion, hora);
+        reunion.add(contacto);
+        System.out.println("El contacto se agrego");
+
     }
 
-    public void eliminarContacto(String nombre, String telf) {
-        for (Contacto contacto : contactos) {
-            if (contacto.getNombre().equals(nombre) && contacto.getTelefono().equals(telf)) {
-                contactos.remove(contacto);
+    //Metodo para eliminar los reuniones
+    public void eliminarReunion(String descripcion) {
+        for (Reunion reunion : reuniones) {
+            if (reunion.getDescripcion().equals(descripcion)) {
+                reuniones.remove(reunion);
                 break;
             }
         }
     }
+
+    // //Metodo para verificar que no se repitan los contactos
+    // public boolean verificarContacto(String nombre, String telf) {
+    //     boolean centinela = false;
+    //     for (Contacto contacto : contactos) {
+    //         if (contacto.getNombre().equals(nombre) && contacto.getTelf().equals(telf)) {
+    //              centinela = true;
+    //         }
+    //     }
+    //     return centinela;
+    // }
+    // }
 
     // public static void menuReunion (){
     //     Scanner scanner = new Scanner(System.in);
