@@ -15,7 +15,7 @@ public class Reunion {
     
 
 
-
+    //Costructor de la clase Reunion
     public Reunion(List listaAsistencia, Date fecha, String descripcion, int hora) {
         this.listaAsistencia = listaAsistencia;
         this.fecha = fecha;
@@ -59,12 +59,14 @@ public class Reunion {
         this.hora = hora;
     }
 
+    //Metodo para agregar contactos
     public void agregarContacto(Contacto contacto) {
-        if (!verificarEstudiante(contacto.getNombre(), contacto.getTelefono())) {
+        if (!verificarContacto(contacto.getNombre(), contacto.getTelefono())) {
             contactos.add(contacto);
         }
     }
 
+    //Metodo para verificar que no se repitan los contactos
     public boolean verificarContacto(String nombre, String telf) {
         boolean centinela = false;
         for (Contacto contacto : contactos) {
@@ -75,7 +77,7 @@ public class Reunion {
         return centinela;
     }
 
-    public void eliminarEstudiante(String nombre, String telf) {
+    public void eliminarContacto(String nombre, String telf) {
         for (Contacto contacto : contactos) {
             if (contacto.getNombre().equals(nombre) && contacto.getTelefono().equals(telf)) {
                 contactos.remove(contacto);
@@ -83,6 +85,22 @@ public class Reunion {
             }
         }
     }
+
+    // public static void menuReunion (){
+    //     Scanner scanner = new Scanner(System.in);
+    //     boolean centinela = true;
+    //     while (centinela) {
+    //         System.out.println("Que quieres hacer en la Reunion: ");
+    //         System.out.println("1. Crear una Reunion: ");
+    //         System.out.println("2. Modificar una Reunion: ");
+    //         System.out.println("3. Eliminar una Reunion: ");
+    //         System.out.println("4. Salir");
+    //         int opcion  = scanner.nextInt();
+    //         centinela = redireccion(opcion);
+
+    //     }
+
+    // }
 
 
 
