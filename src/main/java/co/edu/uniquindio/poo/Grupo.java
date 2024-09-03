@@ -1,83 +1,74 @@
 package co.edu.uniquindio.poo;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.LinkedList;
 
 public class Grupo {
     public String nombre;
-    public byte maximoContactos = 5;
-    public TipoGrupo categoria;
-    public Collection<Grupo> grupos;
-    public Contacto contacto;
+    public Categoria categoria;
+    public Collection<Contacto> contactos;
 
 
-    public Grupo (String nombre, byte maximoContactos, TipoGrupo categoria){
+    public Grupo (String nombre, Categoria categoria){
         this.nombre = nombre;
-        this.maximoContactos = maximoContactos;
         this.categoria = categoria;
+        this.contactos = new ArrayList<>();
     }
 
     public String getNombre() {
         return nombre;
     }
 
-    public byte getMaximoContactos() {
-        return maximoContactos;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
     }
 
-    public TipoGrupo getcategoria() {
+    public Categoria getcategoria() {
         return categoria;
     }
 
-    public record GrupoUno(String nombre){
-
-    }
-    public record GrupoDos(String nombre){
-
-    }
-    public record GrupoTres(String nombre){
-
-    }
-    public record GrupoCuatro (String nombre){
-
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
-
-
-
-    public void registrarGrupo(){
-        // var grupoUno = new GrupoUno("FAMILIA");
-        // var grupoDos = new GrupoDos("AMIGOS");
-        // var grupoTres = new GrupoTres("FIESTA");
-        // var grupoCuatro = new GrupoCuatro("OFICINA");
-        // var Contacto = contactos;
-
-        // grupo.registrarGrupo(contactos);
-
-        assertTrue(grupoUno.contactos().contains(contactos));
-        assertSquals(5, grupoUno.contactos().size());
+    public Collection<Contacto> getContactos() {
+        return contactos;
     }
-   
-    public void eliminarGrupo(String nombre) {
-        for (Grupo grupo : grupos) {
-            if (grupo.getNombre().equals(nombre)) {
-                grupos.remove(grupo);
-                break;
-            }
+
+    
+
+    @Override
+    public String toString() {
+        return "Grupo [nombre=" + nombre + ", categoria=" + categoria + ", contactos=" + contactos + "]";
+    }
+
+
+    //Metodo enum para crear las diferentes categorias de los grupos
+    public enum Categoria {
+        OFICINA,
+        FIESTA,
+        AMIGOS,
+        FAMILIA
+    }
+
+    //Metodo para agregar los contactos al grupo
+    public void agregarGrupoContacto(Contacto contacto) {
+        if (contactos.size() < 5) {
+            contactos.add(contacto);
+        } else {
+            System.out.println("El grupo excedio el numero de contactos (5).");
         }
     }
 
-    public enum TipoGrupo {
-        FAMILIA,
-        FIESTA,
-        OFICINA,
-        AMIGOS;
+    //Metodo para eliminar los contactos del grupo
+    public void eliminarGrupoContacto(Contacto contacto) {
+        if (contactos.contains(contacto)) {
+            contactos.remove(contacto);
+        } else {
+            System.out.println("El contacto se elimino del grupo.");
+        }
     }
-    // public Collection<Contacto> getContactos() {
-    //     return contactos.unmodifiableCollection(contactos);
-    // }
 }
     
 
