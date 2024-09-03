@@ -63,7 +63,7 @@ public class Grupo {
 
     //Metodo para eliminar los contactos del grupo
     public void eliminarGrupoContacto(Contacto contacto) {
-        if (contactos.contains(contacto)) {
+        if (contactos.contains(contacto)) {//Contains significa si la lista contactos contiene el contacto que llega por parametros
             contactos.remove(contacto);
         } else {
             System.out.println("El contacto se elimino del grupo.");

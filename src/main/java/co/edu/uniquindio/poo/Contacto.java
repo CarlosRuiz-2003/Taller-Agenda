@@ -71,7 +71,7 @@ public class Contacto {
    
     //Metodo para eliminar los contactos
     public void eliminarContacto(Contacto contacto) {
-        if (contactos.contains(contacto)) {
+        if (contactos.contains(contacto)) { //Contains significa si la lista contactos contiene el contacto que llega por parametros
             contactos.remove(contacto);
             System.out.println("El contacto se elimino");
         }
