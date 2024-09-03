@@ -1,11 +1,10 @@
 package co.edu.uniquindio.poo;
 
 import java.sql.Date;
-import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Scanner;
 
 
 //Clase para la creacion de reuniones
@@ -73,21 +72,22 @@ public class Reunion {
 
     //Metodo para agregar reuniones
     public void CrearReuniones(int limite) {
+        Date fecha = new Date();
         DateFormat dateFormat = new SimpleDateFormat();
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Nombre del contacto: ");
+        String hora = Integer.toString(locaDate.getHour());
+        System.out.println("Descripcion de la reunion: ");
         String descripcion  = scanner.nextLine();
-        System.out.println("Alias del contacto: ");
-        String alias  = scanner.nextLine();
         for (int i = 0; i < limite; i++) {
             System.out.println("Ingrese el nombre del contacto: ");
-            String nombreM  = scanner.nextLine();
-            System.out.println("Ingrese el telefono del contacto: ");
-            String telefonoM  = scanner.nextLine();
+            String nombre  = scanner.nextLine();
+            //System.out.println("Ingrese el telefono del contacto: ");
+            //String telefono  = scanner.nextLine();
+            ArrayList list = new ArrayList<>();
+            lista.add(nombre);
             if (!Contacto.verificarContacto(nombreM, telefonoM)) {
             }
         }
-        Reunion reunion = new Reunion(listaAsistencia, fecha, descripcion, hora);
+        Reunion reunion = new Reunion(lista, fecha, descripcion, hora);
         reunion.add(contacto);
         System.out.println("El contacto se agrego");
 

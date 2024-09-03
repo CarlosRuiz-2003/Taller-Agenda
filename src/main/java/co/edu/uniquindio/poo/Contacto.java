@@ -115,7 +115,7 @@ public class Contacto {
         boolean centinela = false;
         for (Contacto contacto : contactos) {
             if (contacto.getNombre().equals(nombre) && contacto.getTelefono().equals(telf)) {
-                 centinela = true;
+                centinela = true;
             }
         }
         return centinela;
@@ -161,7 +161,7 @@ public class Contacto {
                 //Grupo.menuGrupo();
                 break;
             case 3:
-                eliminarContacto();();
+                eliminarContacto();
                 break;
             case 4:
                 return false;
